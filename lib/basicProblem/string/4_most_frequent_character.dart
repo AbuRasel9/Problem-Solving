@@ -3,12 +3,11 @@ checkMostFrequentChar(String character){
   Map<String,int> freq={};
   for(String char in character.split("")){
     freq[char]=(freq[char] ?? 0)+1;
-    print(freq.entries.reduce((a, b) => a.value>b.value?a:b,));
 
   }
-
+return freq.entries.reduce((a, b) => a.value>b.value?a:b,);
 }
 
 void main(){
-  checkMostFrequentChar("hello");
+  print("most frequent character:${checkMostFrequentChar("hello")}");
 }
