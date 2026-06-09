@@ -1,5 +1,5 @@
 void main() {
-  print("--- List Problem Solving (1 to 10) ---\n");
+  print("--- List Problem Solving (1 to 12) ---\n");
 
   // ১. লিস্টে একটি আইটেম যোগ করা
   addItem();
@@ -30,6 +30,12 @@ void main() {
 
   // ১০. নির্দিষ্ট রেঞ্জ বা সীমার আইটেম পরিবর্তন করা (ReplaceRange)
   replaceRangeItems();
+
+  // ১১. শর্ত অনুযায়ী ডাটা ফিল্টার করা (Where)
+  WhereItem();
+
+  // ১২. শর্ত পূরণ করে এমন প্রথম ডাটা খুঁজে বের করা (FirstWhere)
+  firstWhereItem();
 }
 
 // ১. add() - লিস্টের একদম শেষে নতুন ডাটা যোগ করার জন্য
@@ -99,7 +105,6 @@ void indexOfItem() {
 }
 
 // ৯. removeRange() - নির্দিষ্ট শুরু থেকে শেষ পর্যন্ত ডাটা মুছে ফেলার জন্য
-// উদাহরণ: (1, 3) দিলে ১ এবং ২ নম্বর ইন্ডেক্স মুছে যাবে (৩ এর আগ পর্যন্ত)
 void removeRangeItems() {
   print("9. Remove Range:");
   List numbers = [10, 20, 30, 40, 50];
@@ -111,7 +116,31 @@ void removeRangeItems() {
 void replaceRangeItems() {
   print("10. Replace Range:");
   List list = ["A", "B", "C", "D"];
-  // ১ থেকে ৩ এর আগ পর্যন্ত ডাটা বদলে নতুন ডাটা বসবে
   list.replaceRange(1, 3, ["X", "Y"]);
   print("Result after replaceRange: $list\n");
+}
+
+// ১১. where() - নির্দিষ্ট শর্ত পূরণ করে এমন সব আইটেম খুঁজে বের করার জন্য (Filtering)
+// এটি মূলত লিস্টকে ফিল্টার করতে ব্যবহৃত হয়।
+void WhereItem() {
+  print("11. Where (Filtering):");
+  List<int> ages = [15, 20, 25, 30];
+  
+  // শর্ত: ১৮ বছরের বেশি সব বয়স খুঁজে বের করা
+  // .where() একটি Iterable দেয়, তাই শেষে .toList() ব্যবহার করে লিস্টে রূপান্তর করা হয়েছে
+  List<int> result = ages.where((age) => age > 18).toList();
+  
+  print("Ages greater than 18 (All): $result\n");
+}
+
+// ১২. firstWhere() - শর্ত পূরণ করে এমন প্রথম আইটেমটি খুঁজে বের করার জন্য
+// লিস্টে অনেকগুলো ডাটা শর্ত পূরণ করলেও এটি শুধুমাত্র প্রথম যেটি পাবে সেটি রিটার্ন করবে।
+void firstWhereItem() {
+  print("12. First Where:");
+  List<int> ages = [15, 20, 25, 30];
+
+  // ১৮ বছরের বেশি প্রথম যে বয়সটি পাবে সেটি রিটার্ন করবে (এখানে ২০)
+  var result = ages.firstWhere((age) => age > 18);
+
+  print("First age found greater than 18 is: $result\n");
 }
